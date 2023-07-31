@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <button class="asd">123</button>
+  <!-- <script src="./14-防抖函数.js"></script> -->
+  <!-- <script src="./15-节流函数.js"></script> -->
+  <script>
+    // document.querySelector('.asd').addEventListener('click',debounce(()=>{console.log(1123)},2000,false),false);
+    document.querySelector('.asd').addEventListener('click',throttle(()=>{console.log(1123)},2000),false);
+    function throttle(fn,delay){
+      let begin = new Date().getTime();
+      let t = null;
+      return function throttled(){
+        let self = this;
+        let args = arguments;
+        clearTimeout(t);
+        let after = new Date().getTime();
+        if(after-begin>delay){
+          fn.apply(self,args);
+          begin = after;
+        }else{
+          t = setTimeout(function(){
+            fn.apply(self,args);
+          },delay);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function Stack(){
+        this.item = [];
+        Stack.prototype.push = function(element) {
+            this.item.push(element);
+        }
+        Stack.prototype.pop = function() {
+            return this.item.pop();
+        }
+        Stack.prototype.peek = function() {
+            return this.item[this.item.length-1]
+        }
+        Stack.prototype.isEmpty = function() {
+           return this.item.length == 0?true:false;
+        }
+        Stack.prototype.size = function() {
+            return this.item.length
+        }
+        Stack.prototype.toString = function() {
+             var newToString = '';
+             for (var i = 0; i < this.item.length; i++) {
+                 newToString += this.item[i]+' ';
+             }
+             return newToString;
+        }
+    }
+    // var p  = new Stack();
+    // p.push(1);
+    // p.push(2);
+    // p.push(3);
+    // p.push(4);
+    // p.pop()
+    // console.log(p.isEmpty());
+    // console.log(p.size())
+    // console.log(p.peek());
+    // console.log(p.toString());
+    function binary(element){
+        var stack = new Stack();
+        var result = '';
+        while(element>0){
+            stack.push(element%2);
+            element = Math.floor(element/2);
+        }
+        while(!stack.isEmpty()){
+            result += stack.pop();
+        }
+        return result;
+    }
+    console.log(binary(100));
+
+</script>
+<body>
+    
+</body>
+</html>

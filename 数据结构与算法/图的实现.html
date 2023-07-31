@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src=".//字典的实现.js"></script>
+    
+</head>
+<body>
+    <script>
+    function Queue(){
+    this.items = [];
+    Queue.prototype.enqueue = function(element){
+        this.items.push(element);
+    }
+    Queue.prototype.dequeue =  function(){
+        return this.items.shift();
+    }
+    Queue.prototype.front = function(){
+        return this.items[0]
+    }
+    Queue.prototype.isEmpty = function(){
+        return this.items.length==0;
+    }
+    Queue.prototype.size = function(){
+        return this.items.length;
+    }
+    Queue.prototype.toString = function(){
+        let str = '';
+        for(i=0;i<this.items.length;i++){
+            str  = str + this.items[i]+' ';
+        }
+        return str;
+    }   
+}
+function Graph(){
+    this.index = [];
+    this.edge = new Dictionary();
+    Graph.prototype.addindex = function(v){
+        this.index.push(v);
+        this.edge.set(v,[]);
+    }
+    Graph.prototype.addedge = function(v1,v2){
+        this.edge.get(v1).push(v2);
+        this.edge.get(v2).push(v1);
+    }
+    Graph.prototype.toString = function(){
+        var result = '';
+        for(i=0;i<this.index.length;i++){
+            result += this.index[i]+"-->";
+            var diredge = this.edge.get(this.index[i]);
+            for(j=0;j<diredge.length;j++){
+                result += diredge[j]+' ';       
+            }
+            result += '\n';
+        }
+        return result;
+    }
+    Graph.prototype.orgcolor = function(){
+        let colors = [];
+        for(i=0;i<this.index.length;i++){
+            colors[this.index[i]] = 'white';
+        }
+        return colors;
+    }
+    Graph.prototype.bfs = function(preV,callback){
+        let colors = this.orgcolor();
+        let que = new Queue();
+        que.enqueue(preV);
+        while(!que.isEmpty()){
+            var v = que.dequeue();
+            var sonlist = this.edge.get(v);
+            colors[v] = 'gray'
+            for(var i=0;i<sonlist.length;i++){
+                var grandsonlist  = sonlist[i];
+                if(colors[grandsonlist]=='white'){
+                    colors[grandsonlist] ='gray';
+                    que.enqueue(grandsonlist);
+                }
+            }
+            callback(v);
+            colors[v] = 'black';
+        }
+    }
+    Graph.prototype.dfs = function(preV,callback){
+        let colors = this.orgcolor();
+        this.dfsmethod(preV,colors,callback);
+    }
+    Graph.prototype.dfsmethod = function(preV,colors,callback){
+        var sonlist = this.edge.get(preV);
+        colors[preV] = 'gray';
+        callback(preV);
+        for(var i=0;i<sonlist.length;i++){
+            if(colors[sonlist[i]]=='white'){
+                this.dfsmethod(sonlist[i],colors,callback);
+                colors[sonlist[i]]='gray'
+            }
+        }
+        colors[preV] = 'black';
+    }
+}
+var graph = new Graph();
+let mydirindex = ['A','B','C','D','E','F','G','H', 'I'];
+for(i=0;i<mydirindex.length;i++){
+    graph.addindex(mydirindex[i]);
+    
+};
+graph.addedge('A', 'B')
+graph.addedge('A', 'C')
+graph.addedge('A', 'D')
+graph.addedge('C', 'D')
+graph.addedge('C', 'G')
+graph.addedge('D', 'G')
+graph.addedge('D', 'H')
+graph.addedge('B', 'E')
+graph.addedge('B', 'F')
+graph.addedge('E', 'I')
+console.log(graph.toString());
+let result1 = ""
+    graph.dfs(graph.index[0], function(v){
+      result1 += v + "-"
+    })
+    console.log(result1);
+    </script>
+</body>
+</html>

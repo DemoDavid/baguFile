@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: aquamarine;
+        }
+    </style>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/underscore.js/1.13.6/underscore.js"></script> -->
+    <script src="./防抖函数.js"></script>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+<script>
+    let container = document.querySelector('.box1');
+    // container.addEventListener('mousemove',_.debounce(doThing,500,true),false);
+    container.addEventListener('click',debounce(doThing,500,true),false);
+    function doThing(){
+        console.log('123');  
+    }
+</script>
+</html>
