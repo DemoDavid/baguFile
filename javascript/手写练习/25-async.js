@@ -52,3 +52,46 @@ const asyncFn = generatorToaAsync(gen);
 asyncFn().then(res => {
   console.log(res)
 });
+
+
+
+
+// function requestData(url) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (url.includes('iceweb')) {
+//         resolve(url)
+//       } else {
+//         reject('请求错误')
+//       }
+//     }, 1000);
+//   })
+// }
+
+// function* getData() {
+//   const res1 = yield requestData('iceweb.io')
+//   const res2 = yield requestData(`iceweb.org ${res1}`)
+//   const res3 = yield requestData(`iceweb.com ${res2}`)
+
+//   console.log(res3)
+// }
+
+// //自动化执行 async await相当于自动帮我们执行.next
+// function asyncAutomation(genFn) {
+//   const generator = genFn()
+
+//   const _automation = (result) => {
+//     let nextData = generator.next(result)
+//     if(nextData.done) return
+
+//     nextData.value.then(res => {
+//       _automation(res)
+//     })
+//   }
+
+//   _automation()
+// }
+
+// asyncAutomation(getData)
+
+

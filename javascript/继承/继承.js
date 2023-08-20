@@ -14,18 +14,18 @@
 // 缺陷，共用原型链;
 
 // 构造函数继承(盗用构造函数)
-// function Parent(){
-//     this.name = 'baba';
-//     this.arr = [1,2,3,4];
-// }
-// function Child(){
+function Parent(){
+    this.name = 'baba';
+    this.arr = [1,2,3,4];
+}
+function Child(){
     // new的步骤，1、创建新的内存空间。2、将函数的prototype赋予对象的proto。
     // 3、将函数內部this赋予给新对象。4、执行函数、5、看看return没，return了就返回return的值，否则返回新对象
-//     Parent.call(this);
-//     this.age = 14;
-// }
-// let b = new Child();
-// console.log(b);
+    Parent.call(this);
+    this.age = 14;
+}
+let b = new Child();
+console.log(b);
 // 缺点：无发使用父类原型上的方法；
 
 // 组合继承

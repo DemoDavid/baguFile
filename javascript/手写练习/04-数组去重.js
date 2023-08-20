@@ -27,3 +27,24 @@ function uniqueArr3(arr){
   console.log(Array.from(set));
 }
 uniqueArr3(arr);
+
+// 利用数组的filter()+indexOf()
+
+function uniqueArr4(arr4){
+  return arr4.filter((item,index)=>{
+    return arr4.indexOf(item)===index;
+  })
+}
+
+
+// 最强去重
+function unique7_1(arr) {
+  var obj = {};
+  return arr.filter(function (item, index, arr) {
+      return obj.hasOwnProperty(typeof item + item) ? false : (obj[typeof item + item] = true)//已存在则过滤，不然就新增属性
+  })
+}
+var testArr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN,
+  'NaN', 0, 0, 'a', 'a', {}, {}
+];
+console.log("对象属性改良", unique7_1(testArr))

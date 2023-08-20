@@ -7,7 +7,7 @@ function MyObjectCreate (obj) {
 function myNew(fn,...args){
   let obj = MyObjectCreate(fn.prototype);
   let res = fn.apply(obj, args);
-  if(res&&(typeof res=='object'||typeof res =='function')){
+  if(res&&( )){
     return res;
   }
   return obj;

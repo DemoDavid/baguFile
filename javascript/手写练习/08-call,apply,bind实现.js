@@ -14,7 +14,7 @@ Function.prototype.myCall = function(target,...args){
   // 相当于把函数放入了对象里，调用的时候按作用域寻找。
 }
 
-function test(arg){
+function test(...arg){
   console.log(this.speak,arg);
 }
 test.myCall({speak:123},1234)
@@ -28,5 +28,5 @@ Function.prototype.bind = function(target,...Outargs){
     return res;
   }
 }
-let newFun = test.bind({speak:'biilbili'});
+let newFun = test.bind({speak:'biilbili'},1);
 newFun(123);

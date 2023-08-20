@@ -16,8 +16,6 @@ function compose(...fn){
    if(fn.length==0)return (T)=>T;
    if(fn.length==1)return fn[0];
    return fn.reduce((pre,val)=>{
-
-    console.log(pre,val);
     return (...args)=>{return pre(val(...args))};
    })
 }
