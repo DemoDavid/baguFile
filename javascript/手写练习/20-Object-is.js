@@ -11,4 +11,4 @@ Object.is = function (x, y) {
   return x !== x && y !== y;
 };
 
-console.log(Object.is(1,2));
+console.log(Object.is(1, 2));

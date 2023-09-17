@@ -1,4 +1,4 @@
-function throttle(fn,delay) {
+ function throttle(fn,delay) {
   let t = null;
   // 闭包记录定时器
   let begin = new Date().getTime();

@@ -23,3 +23,5 @@ function extend(father,child){
 extend(Father,Son);
 let son = new Son();
 son.speak();
+console.log(Son.prototype.__proto__);
+console.log(Object.getPrototypeOf(son));

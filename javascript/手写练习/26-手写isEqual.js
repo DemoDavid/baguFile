@@ -40,6 +40,4 @@ const obj2 = {
 }
 
 console.log(obj1 === obj1);
-console.log(obj1 === obj2);
-console.log(isEqual(obj1, obj1));
 console.log(isEqual(obj1, obj2));

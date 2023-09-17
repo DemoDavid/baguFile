@@ -5,7 +5,7 @@
 // 实现Objcet.assign;
 function MyObjectAssign(target, ...args) {
   if (target == null) {
-    throw new TypeError('传入类型错误');
+    throw new TypeError("传入类型错误");
   }
   let res = Object(target);
   args.forEach((item) => {
@@ -16,8 +16,9 @@ function MyObjectAssign(target, ...args) {
         }
       }
     }
-  })
+  });
   console.log(res);
   return res;
-};
-MyObjectAssign({},'abc');
+}
+MyObjectAssign({}, "abc");
+let res = Object.assign({}, "cde");

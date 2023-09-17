@@ -11,5 +11,7 @@ const FalseArr = {0:'cal',1:'obj',2:'cwd',length:3};
 // let c = Array.apply(null, FalseArr);
 // console.log(c);
 
-let d = Array.prototype.concat.apply([], FalseArr);
-console.log(d);
+// let d = Array.prototype.concat.apply([], FalseArr);
+// console.log(d);
+
+console.log(Object.values(FalseArr));
