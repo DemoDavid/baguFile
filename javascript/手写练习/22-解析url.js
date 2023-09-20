@@ -4,7 +4,7 @@ function parseParam(url) {
   let paramsObj = {};
   // 将 params 存到对象中
   paramsArr.forEach((param) => {
-    if (/=/.test(param)) {
+    if (/=s               HVJ/.test(param)) {
       // 处理有 value 的参数
       let [key, val] = param.split("="); // 分割 key 和 value
       val = decodeURIComponent(val); // 解码
